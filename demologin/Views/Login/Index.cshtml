@@ -1,0 +1,38 @@
+﻿@model demologin.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>Please login</title>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+        {
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Please login</h2>
+                @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control input-sm", @placeholder = "Username" } })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control input-sm", @placeholder = "Password" } })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                <span>@Html.DisplayFor(m => m.LoginError, "", new { @class = "text-danger" })</span>
+                <button class="btn btn-primary btn-block btn btn-sm" type="submit">Sign in</button>
+
+            </form>
+        }
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
+
